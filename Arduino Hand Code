@@ -1,0 +1,54 @@
+#include <Servo.h>
+Servo finger1, finger2, finger3, finger4;
+
+int servoPin1 = ;
+int servoPin2 = ;
+int servoPin3 = ;
+int servoPin4 = ;
+
+int flexPin1 = A;
+int flexPin2 = A;
+int flexPin3 = A;
+int flexPin4 = A;
+
+void setup()
+{
+  finger1.attach(servoPin1);
+  finger2.attach(servoPin2);
+  finger3.attach(servoPin3);
+  finger4.attach(servoPin4);
+  
+  pinMode(servoPin1, OUTPUT);
+  pinMode(servoPin2, OUTPUT);
+  pinMode(servoPin3, OUTPUT);
+  pinMode(servoPin4, OUTPUT);
+  
+  pinMode(flexPin1, INPUT);
+  pinMode(flexPin2, INPUT);
+  pinMode(flexPin3, INPUT);
+  pinMode(flexPin4, INPUT);
+}
+
+void loop()
+
+{
+ int flex1 = analogRead(flexPin1);
+ int flex2 = analogRead(flexPin2);
+ int flex3 = analogRead(flexPin3);
+ int flex4 = analogRead(flexPin4);
+ 
+ int pos1 = map(flex1, 400, 700, 0, 180);
+ pos1 = constrain(pos1, 0, 180);
+ int pos2 = map(flex2, 400, 700, 0, 180);
+ pos2 = constrain(pos2, 0, 180);
+ int pos3 = map(flex3, 400, 700, 0, 180);
+ pos3 = constrain(pos3, 0, 180);
+ int pos4 = map(flex4, 480, 640, 0, 180);
+ pos4 = constrain(pos4, 0, 180);
+
+
+ finger1.write(pos1);
+ finger2.write(pos2);
+ finger3.write(pos3);
+ finger4.write(pos4);
+}
